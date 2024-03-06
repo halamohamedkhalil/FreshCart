@@ -1,0 +1,19 @@
+<section class="my-4">
+    <div class="row g-4 d-flex justify-content-center align-items-center">
+        <div class="col-md-3" *ngFor="let brand of brands">
+        <div class="card">
+                 <div [routerLink]="['/brandsdetails', brand._id]"
+            role="button" class="border border-success rounded p-2 shadow" >
+            <div class="card-img">
+                <img [src]="brand.image" class="w-100">
+            </div>
+            <Div class="card-body text-center">
+                                <p>{{ brand.name }} </p>
+
+            </Div>
+            </div>
+        </div>
+       
+        </div>
+    </div>
+</section>

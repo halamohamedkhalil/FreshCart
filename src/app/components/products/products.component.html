@@ -1,0 +1,33 @@
+
+<!-- Products -->
+
+<section class="my-4">
+
+    <input type="text" class="form-control w-50 mx-auto my-5" placeholder="Search....." 
+    [(ngModel)]="searchTerm" />
+
+    <div class="row g-4">
+        <div class="col-md-3" *ngFor="let item of products | search : searchTerm ">
+   
+            <div class="product" >
+                <div class="p-2 cursor-pointer" [routerLink]="['/details' , item._id]">
+                    <img [src]="item.imageCover" class="w-100" [alt]="item.title">
+                <h3 class="h6">{{item.category.name | termtext:3 }}</h3>
+
+                <h4 class="h6">{{ item.title | termtext:2 | lowercase}}</h4>
+
+                    <div class="d-flex align-items-center justify-content-between">
+                        <span>{{item.price}} EGP</span>
+                        <div>
+                            <i class="fas fa-star rating-color"></i>
+                            <span class="text-muted">{{item.ratingsAverage}}</span>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="addCart(item.id)" class="btn-main w-100">Add Product</button>
+                
+            </div>
+        </div>
+    </div>
+
+</section>
