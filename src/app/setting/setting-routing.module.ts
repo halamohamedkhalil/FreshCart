@@ -1,12 +1,13 @@
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'update', pathMatch:'full'},
-  {path:'update' , component:UpdatePasswordComponent},
-  {path:'forget' , component:ForgetPasswordComponent},
+  {path:'',redirectTo:'update',pathMatch:'full'},
+  {path:'update',component:UpdatepasswordComponent},
+  {path:'forget',component:ForgetpasswordComponent},
+
 ];
 
 @NgModule({

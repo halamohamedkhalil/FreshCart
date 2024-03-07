@@ -2,8 +2,7 @@
     <div class="row g-4 d-flex justify-content-center align-items-center">
         <div class="col-md-3" *ngFor="let brand of brands">
         <div class="card">
-                 <div [routerLink]="['/brandsdetails', brand._id]"
-            role="button" class="border border-success rounded p-2 shadow" >
+                 <div data-bs-toggle="modal" data-bs-target="#brandModal" class="border border-success rounded p-2 shadow" (click)="showDetails(brand._id)">
             <div class="card-img">
                 <img [src]="brand.image" class="w-100">
             </div>
@@ -17,3 +16,4 @@
         </div>
     </div>
 </section>
+<app-brandsdetails [brandDetails]="BrandDetails"></app-brandsdetails>

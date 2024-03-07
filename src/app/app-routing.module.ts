@@ -1,4 +1,3 @@
-import { BrandsdetailsComponent } from './components/brandsdetails/brandsdetails.component';
 import { CategorydetailsComponent } from './components/categorydetails/categorydetails.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
     {path:'details/:id',component:DetailsComponent},
     {path:'brands',component:BrandsComponent},
     {path:'categories',component:CategoriesComponent},
-    {path:'brandsdetails/:id',component:BrandsdetailsComponent},
     {path:'categorydetails/:id',component:CategorydetailsComponent}
 
   ]},
