@@ -53,5 +53,8 @@ export class EcomdataService {
   {
     return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, resetPasswordForm)
   }
-
+  updatePassword(updatePasswordForm:object): Observable<any>
+  {
+    return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/users/changeMyPassword`, updatePasswordForm)
+  }
 }
