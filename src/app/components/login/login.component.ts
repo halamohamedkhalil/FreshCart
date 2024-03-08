@@ -1,7 +1,7 @@
 import { AuthService } from './../../shared/services/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 
@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+  
 })
 export class LoginComponent {
 
@@ -32,7 +33,6 @@ export class LoginComponent {
     email:[null, [Validators.required , Validators.email] ],
     password:[null,  [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{6,20}$/)] ]
   })
-  
 
   handleForm():void{
     console.log(this.loginForm.value);

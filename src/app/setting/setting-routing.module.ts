@@ -4,7 +4,7 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'update',pathMatch:'full'},
+  {path:'',redirectTo:'forget',pathMatch:'full'},
   {path:'update',component:UpdatepasswordComponent},
   {path:'forget',component:ForgetpasswordComponent},
 

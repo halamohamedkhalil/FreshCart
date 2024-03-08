@@ -15,6 +15,7 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgetpasswordComponent } from './setting/forgetpassword/forgetpassword.component';
 
 const routes: Routes = [
   { path:'',
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path:'', component:AuthLayoutComponent, children:[
     {path:'login', component:LoginComponent},
     {path:'register',component:RegisterComponent},
+    {path:'forgetPassword',component:ForgetpasswordComponent}
   ]},
 
   {path: '**', component:NotfoundComponent},

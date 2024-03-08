@@ -39,5 +39,19 @@ export class EcomdataService {
     return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
   }
 
+  forgetPassword(userEmail:object): Observable<any>
+  {
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords`, userEmail)
+  }
+
+  resetCode(resetCode:object): Observable<any>
+  {
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`, resetCode)
+  }
+
+  resetPassword(resetPasswordForm:object): Observable<any>
+  {
+    return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, resetPasswordForm)
+  }
 
 }
