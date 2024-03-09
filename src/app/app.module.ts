@@ -1,4 +1,4 @@
-import { MyHttpInterceptor } from './my-http.interceptor';
+import { MyHttpInterceptor } from './shared/guards/interceptors/my-http.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -31,6 +31,9 @@ import { AllordersComponent } from './components/allorders/allorders.component';
 import { CategorydetailsComponent } from './components/categorydetails/categorydetails.component';
 import { BrandsdetailsComponent } from './components/brandsdetails/brandsdetails.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoadingInterceptor } from './shared/guards/interceptors/loading.interceptor';
+
 
 
 @NgModule({
@@ -71,11 +74,13 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     CarouselModule,
     FormsModule,
     ToastrModule.forRoot(), // ToastrModule added
+    NgxSpinnerModule
 
   ],
   providers: [ {
-    provide:HTTP_INTERCEPTORS , useClass:MyHttpInterceptor, multi:true
-  }],
+    provide:HTTP_INTERCEPTORS , useClass:MyHttpInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS , useClass:LoadingInterceptor, multi:true},
+  ],
   bootstrap: [AppComponent],
 
 })

@@ -3,6 +3,8 @@ import { EcomdataService } from './../../shared/services/ecomdata.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -12,10 +14,15 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class DetailsComponent implements OnInit {
 
   constructor( private _ActivatedRoute:ActivatedRoute ,
-    private _EcomdataService:EcomdataService){}
+    private _EcomdataService:EcomdataService,
+    private _CartService:CartService ,
+    private _ToastrService:ToastrService
 
 
-    productDetais:Product = {} as Product;
+    ){}
+
+
+    productDetails:Product = {} as Product;
 
     productSlider: OwlOptions = {
       loop: true,
@@ -39,12 +46,22 @@ export class DetailsComponent implements OnInit {
           this._EcomdataService.getproductDetails(idProduct).subscribe( {
             next :(response)=>{
               console.log(response.data);
-              this.productDetais = response.data;
+              this.productDetails = response.data;
             }
           })
-
-
           console.log(idProduct);
+      }
+    })
+  }
+
+  addCart(id:string):void{
+    this._CartService.addToCart(id).subscribe({
+      next: (response) => { 
+        console.log(response);
+         this._ToastrService.success(response.message)
+      },
+      error:(err)=>{
+        console.log(err)
       }
     })
   }

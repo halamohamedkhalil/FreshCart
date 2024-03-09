@@ -3,7 +3,7 @@
         <div class="col-md-4">
             <owl-carousel-o [options]="productSlider">
 
-                <ng-container *ngFor="let src of productDetais.images">
+                <ng-container *ngFor="let src of productDetails.images">
                   <ng-template carouselSlide>
                     <img [src]="src" class="w-100">
                   </ng-template>
@@ -12,22 +12,20 @@
               </owl-carousel-o>
         </div>
         <div class="col-md-8">
-            <h3 class="fw-bold">{{ productDetais.title }}</h3>
-            <p class="text-muted">{{productDetais.description}}</p>
+            <h3 class="fw-bold">{{ productDetails.title }}</h3>
+            <p class="text-muted">{{productDetails.description}}</p>
 
-            <h4 class="h6">{{ productDetais.category.name}}</h4>
+            <h4 class="h6">{{ productDetails.category != undefined?productDetails.category.name:""}}</h4>
 
             <div class="d-flex align-items-center justify-content-between">
-                <span>{{productDetais.price}} EGP</span>
+                <span>{{productDetails.price}} EGP</span>
                 <div>
                     <i class="fas fa-star rating-color"></i>
-                    <span class="text-muted">{{productDetais.ratingsAverage}}</span>
+                    <span class="text-muted">{{productDetails.ratingsAverage}}</span>
                 </div>
             </div>
 
-            <button class="btn-main w-100">Add Product</button>
-
-
+            <button (click)="addCart(productDetails.id)" class="btn-main w-100">Add Product</button>
         </div>
     </div>
 </section>
