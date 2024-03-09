@@ -70,9 +70,10 @@
         <div class="col-md-3" *ngFor="let item of products.slice(0,40) | search : searchTerm ">
    
             <div class="product" >
-                <i (click)="addWish(item._id)" class="fa-regular fa-heart heart" ></i>
+                <i *ngIf="!wishListData.includes( $any(item._id))" (click)="addWish(item._id)" class="fa-regular fa-heart heart" ></i>
 
-                <i (click)="removeWish(item._id)" class="fa-solid fa-heart fa-2x"></i>
+                <i *ngIf="wishListData.includes( $any(item._id))" (click)="removeWish(item._id)" class="fa-solid fa-heart heart"></i>
+
                 <div class="p-2 cursor-pointer" [routerLink]="['/details' , item._id]">
                     <img [src]="item.imageCover" class="w-100" [alt]="item.title">
                 <h3 class="h6">{{item.category.name | termtext:3 }}</h3>

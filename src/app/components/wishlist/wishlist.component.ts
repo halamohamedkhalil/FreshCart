@@ -20,6 +20,7 @@ export class WishlistComponent implements OnInit {
     ) {}
     
   products:Product[] = [];
+  wishListData:string[] = [];
 
 
   ngOnInit(): void {
@@ -29,6 +30,17 @@ export class WishlistComponent implements OnInit {
         this.products = response.data;
       }
     })
+
+    this._EcomdataService.getWishList().subscribe({
+      next: (response)=>{
+       // console.log(response.data);
+        const newData = response.data.map( (item:any)=>item._id)
+
+        // console.log(newData); 
+
+        this.wishListData = newData
+      }
+    });
     }
 
   addWish(prodId:string|undefined):void{
@@ -53,5 +65,20 @@ export class WishlistComponent implements OnInit {
     })
   }
   
+  removeWish(prodId:string|undefined):void{
+    this._EcomdataService.removeWishList(prodId).subscribe({
+      next: (response)=>{
+        console.log(response);
+        this._ToastrService.success(response.message)
+        this.wishListData = response.data
+        
+        // console.log('before' , this.products);
+        const mewProductsData = this.products.filter( (item:any)=> this.wishListData.includes(item._id))
+        // console.log( 'after', mewProductsData)
+
+        this.products = mewProductsData;
+      } 
+    } )
+  }
 
 }

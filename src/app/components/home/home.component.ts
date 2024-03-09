@@ -27,6 +27,41 @@ export class HomeComponent implements OnInit{
   searchTerm:string ='';
   wishListData:string[] = [];
   
+ 
+
+
+  ngOnInit(): void {
+    //get All Products
+     this._EcomdataService.getAllProducts().subscribe({
+      next : (response:any)=>{
+        console.log(response.data);
+        this.products = response.data
+      },
+    });
+
+    //get categories
+    this._EcomdataService.getCategories().subscribe({
+      next: (response)=>{
+        console.log(response);
+        this.Categories = response.data;
+
+      }
+    });
+
+    this._EcomdataService.getWishList().subscribe({
+      next: (response)=>{
+       // console.log(response.data);
+        const newData = response.data.map( (item:any)=>item._id)
+
+        // console.log(newData); 
+
+        this.wishListData = newData
+      }
+    });
+
+
+  }
+
   addCart(id:string):void{
     this._CartService.addToCart(id).subscribe({
       next: (response) => { 
@@ -78,26 +113,6 @@ export class HomeComponent implements OnInit{
     nav: false
   }
 
-
-  ngOnInit(): void {
-    //get All Products
-     this._EcomdataService.getAllProducts().subscribe({
-      next : (response:any)=>{
-        console.log(response.data);
-        this.products = response.data
-      },
-    });
-
-    //get categories
-    this._EcomdataService.getCategories().subscribe({
-      next: (response)=>{
-        console.log(response);
-        this.Categories = response.data;
-
-      }
-    })
-  }
-
   addWish(prodId:string|undefined):void{
     this._EcomdataService.addToWishList(prodId).subscribe({
       next: (response)=>{
@@ -113,8 +128,8 @@ export class HomeComponent implements OnInit{
       next: (response)=>{
         console.log(response);
         this._ToastrService.success(response.message)
-        this.wishListData = response.data
-      }    
-    } )
+        this.wishListData = response.data;
+      },
+    });
   }
 }
