@@ -41,7 +41,21 @@ a:hover {
   border: solid 1px var(--main-color);
   transition: box-shadow 0.5s;
   overflow: hidden;
+  position: relative;
 }
+.heart{
+  font-size: 40px;
+  position: absolute;
+  top: 5px;
+  right: -50px;
+  z-index: 999;
+  cursor: pointer;
+  transition: right .5s;
+}
+.product:hover .heart{
+  right: 5px;
+}
+
 .product:hover {
   box-shadow: 0 0 10px #11bd1168;
 }
@@ -88,3 +102,5 @@ a:hover {
 .btn-main:hover {
   background-color: #11bd11;
 }
+
+

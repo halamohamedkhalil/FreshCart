@@ -1,3 +1,4 @@
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CategorydetailsComponent } from './components/categorydetails/categorydetails.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
     {path:'details/:id',component:DetailsComponent},
     {path:'brands',component:BrandsComponent},
     {path:'categories',component:CategoriesComponent},
-    {path:'categorydetails/:id',component:CategorydetailsComponent}
+    {path:'categorydetails/:id',component:CategorydetailsComponent},
+    {path:'wishlist',component:WishlistComponent}
 
   ]},
   {path:'', component:AuthLayoutComponent, children:[

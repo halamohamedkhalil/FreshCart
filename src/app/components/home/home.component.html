@@ -70,6 +70,9 @@
         <div class="col-md-3" *ngFor="let item of products.slice(0,40) | search : searchTerm ">
    
             <div class="product" >
+                <i (click)="addWish(item._id)" class="fa-regular fa-heart heart" ></i>
+
+                <i (click)="removeWish(item._id)" class="fa-solid fa-heart fa-2x"></i>
                 <div class="p-2 cursor-pointer" [routerLink]="['/details' , item._id]">
                     <img [src]="item.imageCover" class="w-100" [alt]="item.title">
                 <h3 class="h6">{{item.category.name | termtext:3 }}</h3>
@@ -84,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <button (click)="addCart(item.id)" class="btn-main w-100">Add Product</button>
+                <button (click)="addCart(item._id)" class="btn-main w-100">Add Product</button>
                 
             </div>
         </div>

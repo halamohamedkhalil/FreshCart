@@ -53,8 +53,31 @@ export class EcomdataService {
   {
     return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`, resetPasswordForm)
   }
+
   updatePassword(updatePasswordForm:object): Observable<any>
   {
     return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/users/changeMyPassword`, updatePasswordForm)
   }
+
+  addToWishList(prodId: string|undefined): Observable<any>
+  {
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/wishlist`, 
+    {
+      "productId": prodId
+    }
+    )
+  }
+
+  getWishList(): Observable<any>
+  {
+    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/wishlist`)
+  }
+
+  removeWishList(prodId:string|undefined): Observable<any>
+  {
+    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${prodId}`
+    )
+  }
+
+  
 }

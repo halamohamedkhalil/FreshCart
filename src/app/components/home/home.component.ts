@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit{
 
   Categories:any[] =[];
   searchTerm:string ='';
+  wishListData:string[] = [];
   
   addCart(id:string):void{
     this._CartService.addToCart(id).subscribe({
@@ -95,5 +96,25 @@ export class HomeComponent implements OnInit{
 
       }
     })
+  }
+
+  addWish(prodId:string|undefined):void{
+    this._EcomdataService.addToWishList(prodId).subscribe({
+      next: (response)=>{
+        console.log(response);
+        this._ToastrService.success(response.message)
+        this.wishListData = response.data
+      }    
+    } )
+  }
+
+  removeWish(prodId:string|undefined):void{
+    this._EcomdataService.removeWishList(prodId).subscribe({
+      next: (response)=>{
+        console.log(response);
+        this._ToastrService.success(response.message)
+        this.wishListData = response.data
+      }    
+    } )
   }
 }
